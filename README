@@ -1,0 +1,7 @@
+#class Meta:
+        ordering = ["-created_at", "updated_at"] #відображення в панеді адміна в певному порядку
+        db_table = "testing_posts"  #міняємо назву таблички в db.sqlite3
+        verbose_name = "Blog Post" #зміна на сайті назви моделі
+        verbose_name_plural = "Blog Posts" #як називати модель в множині
+        unique_together = (("title", "user_email"),) #об'єднуємо поля, тут один користувач може створювати різні назви постів
+        
