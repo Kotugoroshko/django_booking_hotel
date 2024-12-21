@@ -27,3 +27,17 @@ class Booking(models.Model):
         verbose_name = "Booking"
         verbose_name_plural = "Bookings"
         ordering = ["start_time"]
+
+class Event(models.Model):
+    title = models.CharField(max_length=256)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="events")
+
+    def __str__(self):
+        return f'''{self.booking.user} - {self.booking.room}
+                {self.booking.start_time} to {self.booking.end_time}'''
+    
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
+        ordering = ["booking"]
+
