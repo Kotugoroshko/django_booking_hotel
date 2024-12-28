@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
- <form method="POST" action="{% url 'book-room' %}">
+ <form method="POST" action="{% url 'book-event' %}">
  {% csrf_token %}
+    <label for ="event-title">Event title:</label>
+    <input type="text" id="event-title" name="event-title">
+    <br>
     <label for ="room-number">Room number:</label>
     <select id="room-number" name="room-number">
         {% for room in rooms %}
