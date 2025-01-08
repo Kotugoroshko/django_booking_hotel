@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from booking.models import Room, Booking, Event
 from django.http import HttpResponse
 # Create your views here.
@@ -28,6 +29,7 @@ def room_list(request):
     }
     return render(request=request, template_name="booking/rooms_list.html", context=context)
 
+@login_required(login_url="auth_login")
 def book_room(request):
     if request.method == "POST":
         room_number = request.POST.get("room-number")
@@ -56,6 +58,7 @@ def book_room(request):
     else:
         return render(request, template_name="booking/booking_form.html", context=check_rooms())
 
+@login_required(login_url="auth_login")
 def booking_details(request, pk):
     try:
         booking = Booking.objects.get(id = pk)
@@ -69,7 +72,7 @@ def booking_details(request, pk):
             status = 404
         )
     
-
+@login_required(login_url="auth_login")
 def book_event(request):
 
     if request.method == "POST":
@@ -105,6 +108,7 @@ def book_event(request):
     else:
         return render(request, template_name="booking/booking_event.html", context=check_event_rooms())
 
+@login_required(login_url="auth_login")
 def event_details(request, pk):
     try:
         event = Event.objects.get(id = pk)

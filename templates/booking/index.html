@@ -2,16 +2,16 @@
 {% block content %}
     {{render_string}}
     {% if request.user.is_authenticated%}
-        <h1>HELLO, AUTHENTICATED USER!</h1>
+        <h1>HELLO, {{request.user.username}}!</h1>
 
     {% else %}
         <h1>HELLO, UNAUTHENTICATED USER!</h1>
+        <br>
+        <a class="btn btn-primary" role="button" href="{% url 'register' %}">Please, sign in</a>
+        <a class="btn btn-primary" role="button" href="{% url 'auth_login' %}">Please, log in</a>
+        <br>
     {% endif %}
-    <a href="{% url 'rooms-list' %}">Go to rooms list</a>
-    <br>
-    <a href="{% url 'book-room' %}">Go to rooms booking</a>
-    <br>
-    <a href="{% url 'book-event' %}">Go to booking event</a>
+
 
 
 {% endblock %}

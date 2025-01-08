@@ -1,2 +1,10 @@
-<h1>Booking System</h1>
-<hr>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="navbar-nav">
+    <a class="nav-link active" href="{% url 'rooms-list' %}">Go to rooms list</a>
+    <a class="nav-link" href="{% url 'book-room' %}">Go to rooms booking</a>
+    <a class="nav-link" href="{% url 'book-event' %}">Go to booking event</a>
+    <a class="btn btn-primary" role="button" href="{% url 'auth_logout' %}">Logout</a>
+</div>
+</nav>
+<h1><a href="{% url 'index' %}">Booking System</a></h1>
+<hr class="border border-primary border-3 opacity-75">
